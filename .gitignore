@@ -1,0 +1,31 @@
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+
+# NOTE: /Build/WebGL is intentionally NOT ignored - the assignment requires the WebGL build in the repo.
+
+# IDE files
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.suo
+*.user
+*.pidb
+*.userprefs
+
+# Crash / build artifacts
+*.apk
+*.aab
+*.unitypackage
+sysinfo.txt
+crashlytics-build.properties
+
+# OS junk
+.DS_Store
+Thumbs.db
