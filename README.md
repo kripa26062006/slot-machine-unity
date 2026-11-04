@@ -2,7 +2,7 @@
 
 A playable slot machine built in Unity for the Game Development Internship assignment.
 
-**▶ Play it in the browser:** `https://kripa26062006.github.io/slot-machine-unity/`
+**▶ Play it in the browser:** https://kripa26062006.github.io/slot-machine-unity/Build/webGL/
 
 ## Game Overview
 Three reels spin and stop one after another. The player picks a bet, presses **SPIN**,
@@ -19,52 +19,46 @@ You start with 1000 credits; if you run out, pressing SPIN restarts the game.
    `python -m http.server 8000`
 3. Open `http://localhost:8000/Build/webGL/` in your browser.
 
-**From source:** open the project folder in Unity `<6000.3.26f1>`, open `Assets/Scenes/SampleScene.unity`, press Play.
+**From source:** open the project folder in Unity `6000.3.26f1`, open `Assets/Scenes/SampleScene.unity`, press Play.
 
 ## Bonus Features
-
 - **Adjustable bet** (10 / 25 / 50 / 100) with a credits balance.
 - **Win celebration:** reels pulse and the win amount counts up.
 - **Left-to-right staggered reel stops** with a small overshoot "clunk" for game feel.
-- **Weighted symbols** so rare symbols pay more (tuned to roughly 89% return-to-player).
+- **Weighted symbols** so rare symbols pay more (roughly 89% return-to-player).
 
 ## Thought Process / Approach
 **Separation of concerns (OOP).** Each class has one job:
 
 | Class | Responsibility |
 |---|---|
-| `SymbolData` (ScriptableObject) | A symbol's sprite, payout multiplier, weight. Designers tweak odds without touching code. |
+| `SymbolData` (ScriptableObject) | A symbol's sprite, payout multiplier and weight. Odds can be tweaked without touching code. |
 | `RandomService` | The only place randomness lives. Weighted picking with `System.Random`. |
-| `PayoutCalculator` | Pure win/payout rules. No Unity dependencies, so it's easy to test. |
+| `PayoutCalculator` | Pure win/payout rules. |
 | `Reel` | One reel's visuals and spin animation. |
 | `SlotUI` | Labels and buttons; raises events, knows no rules. |
 | `SlotMachineController` | Credits and spin flow; connects everything above. |
 
 **Outcome first, animation second.** The result is decided by the RNG *before* the reels move,
-then each reel animates onto its pre-decided symbol. The animation is purely cosmetic, so fairness lives in one place.
+then each reel animates onto its pre-decided symbol. The animation is purely cosmetic.
 
 **Smooth reels.** Each reel is a virtual infinite strip of symbols with only 6 recycled UI cells.
-The reel ramps up, spins, then decelerates with a cubic ease-out whose starting speed matches the spin speed
-(no visible jerk), overshoots slightly and settles back.
+The reel ramps up, spins, then decelerates with a cubic ease-out, overshoots slightly and settles back.
 
-**Symbol table (default tuning)**
+**Symbol table**
 
 | Symbol | Weight | Payout |
 |---|---|---|
 | Cherry | 40 | x5 |
-| Lemon | 25 | x6 |
 | Bell | 30 | x10 |
-| Bar | 20| x25 |
+| BAR | 20 | x25 |
 | Seven | 10 | x100 |
-| Wild | 8 | x100 (only if all three are wilds) |
 
 ## Project Structure
 ```
 Assets/
   Scripts/      C# classes
-  Prefabs/      Symbol cell, reel
-  Animations/   Animation assets
-  UI/           UI sprites, fonts
-  Sounds/       Audio (optional)
-Build/WebGL/    WebGL build
+  Prefabs/      Symbol cell
+  Data/         Symbol ScriptableObjects
+Build/webGL/    WebGL build
 ```
