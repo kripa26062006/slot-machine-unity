@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Symbol_1
   m_EditorClassIdentifier: Assembly-CSharp::SlotGame.SymbolData
   symbolName: Symbol
-  sprite: {fileID: 0}
+  sprite: {fileID: 2193077994593488821, guid: d9583d614ee595142b09ce8f6c142a7a, type: 3}
   payoutMultiplier: 5
   weight: 10
   isWild: 0
