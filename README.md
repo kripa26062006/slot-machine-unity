@@ -2,7 +2,7 @@
 
 A playable slot machine built in Unity for the Game Development Internship assignment.
 
-**▶ Play it in the browser:** `<paste your GitHub Pages / itch.io link here>`
+**▶ Play it in the browser:** `https://kripa26062006.github.io/slot-machine-unity/`
 
 ## Game Overview
 Three reels spin and stop one after another. The player picks a bet, presses **SPIN**,
@@ -17,9 +17,9 @@ You start with 1000 credits; if you run out, pressing SPIN restarts the game.
 2. WebGL builds can't be opened by double-clicking `index.html` (browsers block file access).
    Serve the folder instead, e.g. from the repo root:
    `python -m http.server 8000`
-3. Open `http://localhost:8000/Build/WebGL/` in your browser.
+3. Open `http://localhost:8000/Build/webGL/` in your browser.
 
-**From source:** open the project folder in Unity `<your Unity version>`, open `Assets/Scenes/Main.unity`, press Play.
+**From source:** open the project folder in Unity `<6000.3.26f1>`, open `Assets/Scenes/SampleScene.unity`, press Play.
 
 ## Bonus Features
 - **Wild symbol** that substitutes for any other symbol.
